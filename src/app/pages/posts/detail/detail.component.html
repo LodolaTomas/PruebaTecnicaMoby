@@ -1,1 +1,32 @@
-<p>detail works!</p>
+<div class="card content">
+  <h2 class="title">
+    Detail Post: {{ post.id }}
+    <span>userid:{{ post.userId }}</span>
+  </h2>
+  <h1 class="title">
+    {{ post.title }}
+  </h1>
+  <div class="body-content">
+    <h4 class="body-title">Body</h4>
+    <p class="body-text">
+      {{ post.body }}
+    </p>
+  </div>
+  <p-divider></p-divider>
+  <p-panel header="Comments" [toggleable]="true">
+    <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog>
+    <div class="comment-item" *ngFor="let comment of comments">
+      <h5>
+        Nombre: <span>{{ comment.name }}</span>
+      </h5>
+      <label for="text-area">Comentario</label>
+      <textarea id="text-area" [rows]="4" pInputTextarea [disabled]=isTextAreaDisabled >{{comment.comment}}</textarea>
+      <div class="p-toolbar-group-right">
+        <ng-container *ngIf="false">
+          <p-button icon="pi pi-pencil" styleClass="p-button-warning"></p-button>
+        </ng-container>
+        <p-button icon="pi pi-trash" styleClass="p-button-danger" (click)="deleteComment(comment.email)"></p-button>
+    </div>
+    </div>
+</p-panel>
+</div>
