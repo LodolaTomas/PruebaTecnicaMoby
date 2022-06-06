@@ -18,6 +18,7 @@ import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
 import {FieldsetModule} from 'primeng/fieldset';
 import {InputTextModule} from 'primeng/inputtext';
+import { PostsService } from 'src/app/service/posts.service';
 @NgModule({
   declarations: [
     ListComponent,
@@ -39,6 +40,6 @@ import {InputTextModule} from 'primeng/inputtext';
     FieldsetModule,
     InputTextModule
   ],
-  providers: [ConfirmationService]
+  providers: [ConfirmationService,PostsService]
 })
 export class PostsModule { }
