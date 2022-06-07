@@ -1,0 +1,33 @@
+<p-panel header="Comments" [toggleable]="true">
+    <p-confirmDialog
+      [style]="{ width: '50vw' }"
+      [baseZIndex]="10000"
+    ></p-confirmDialog>
+    <div class="comment-item" *ngFor="let comment of comments">
+      <h5>
+        Nombre: <span>{{ comment.name }}</span>
+      </h5>
+      <label for="text-area">Comentario</label>
+      <textarea
+        id="text-area"
+        [rows]="4"
+        pInputTextarea
+        [disabled]="isTextAreaDisabled"
+        >{{ comment.comment }}</textarea
+      >
+      <div class="p-toolbar-group-right">
+        <ng-container *ngIf="false">
+          <p-button
+            icon="pi pi-pencil"
+            styleClass="p-button-warning"
+          ></p-button>
+        </ng-container>
+        <p-button
+          icon="pi pi-trash"
+          styleClass="p-button-danger"
+          (click)="deleteComment(comment.id)"
+        ></p-button>
+      </div>
+    </div>
+    <p-button label="Emmit" icon="pi pi-check" iconPos="left" styleClass="p-button-rounded p-button-secondary" (onClick)="emitLastComment()"></p-button>
+  </p-panel>
