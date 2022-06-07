@@ -23,6 +23,9 @@ import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
 import {FieldsetModule} from 'primeng/fieldset';
 import {ToastModule} from 'primeng/toast';
+
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 @NgModule({
   declarations: [
     ListComponent,
@@ -45,7 +48,8 @@ import {ToastModule} from 'primeng/toast';
     ConfirmDialogModule,
     FieldsetModule,
     InputTextModule,
-    ToastModule
+    ToastModule,
+    NgbModule
   ],
   providers: [ConfirmationService,PostsService]
 })

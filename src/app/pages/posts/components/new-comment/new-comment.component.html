@@ -1,4 +1,4 @@
-<p-fieldset legend="New Comment">
+<p-fieldset legend="{{title}}">
   <form
     class="comment-form"
     [formGroup]="commentForm"
@@ -57,7 +57,7 @@
       </ng-container>
     </div>
     <p-button
-      label="send comment"
+      label="{{titleSubmit}}"
       type="submit"
       icon="pi pi-check"
       iconPos="left"

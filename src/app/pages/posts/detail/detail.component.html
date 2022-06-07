@@ -27,6 +27,6 @@
     <p-divider></p-divider>
     <app-comments (lastComment)="getLastComment($event)" [postId]="idPost"></app-comments>
     <p-divider></p-divider>
-    <app-new-comment [postId]="idPost"></app-new-comment>
+    <app-new-comment [postId]="idPost" [title]="'New Comment'"></app-new-comment>
   </ng-container>
 </div>
