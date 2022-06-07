@@ -1,0 +1,67 @@
+<p-fieldset legend="New Comment">
+  <form
+    class="comment-form"
+    [formGroup]="commentForm"
+    (submit)="submitComment()"
+  >
+    <div class="inputs-group">
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+        <input
+          type="text"
+          pInputText
+          placeholder="Name"
+          formControlName="name"
+          [ngClass]="{ 'ng-invalid ng-dirty': formNotValid('name') }"
+        />
+      </div>
+      <ng-container *ngIf="formNotValid('name')">
+        <small id="username2-help" class="p-error block">
+          The name is required.
+        </small>
+      </ng-container>
+    </div>
+    <div class="inputs-group">
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon"><i class="pi pi-envelope"></i></span>
+        <input
+          type="email"
+          pInputText
+          placeholder="Email"
+          formControlName="email"
+          [ngClass]="{ 'ng-invalid ng-dirty': formNotValid('email') }"
+        />
+      </div>
+      <ng-container *ngIf="formNotValid('email')">
+        <small id="username2-help" class="p-error block">
+          The email is required and must be valid.
+        </small>
+      </ng-container>
+    </div>
+    <div class="inputs-group">
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon"><i class="pi pi-comment"></i></span>
+        <textarea
+          id="text-area"
+          [rows]="4"
+          pInputTextarea
+          formControlName="comment"
+          placeholder="Comment"
+          [ngClass]="{ 'ng-invalid ng-dirty': formNotValid('comment') }"
+        ></textarea>
+      </div>
+      <ng-container *ngIf="formNotValid('comment')">
+        <small id="username2-help" class="p-error block">
+          The comment is required and minlength 500 characters
+        </small>
+      </ng-container>
+    </div>
+    <p-button
+      label="send comment"
+      type="submit"
+      icon="pi pi-check"
+      iconPos="left"
+      styleClass="p-button-rounded p-button-secondary"
+    ></p-button>
+  </form>
+</p-fieldset>
