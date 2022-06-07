@@ -3,7 +3,7 @@
       [style]="{ width: '50vw' }"
       [baseZIndex]="10000"
     ></p-confirmDialog>
-    <ng-container *ngIf="comments;else notComments">
+    <ng-container *ngIf="comments.length>0;else notComments">
     <div class="comment-item" *ngFor="let comment of comments">
       <h5>
         Nombre: <span>{{ comment.name }}</span>
@@ -33,6 +33,6 @@
     <p-button label="Emit" icon="pi pi-check" iconPos="left" styleClass="p-button-rounded p-button-secondary" (onClick)="emitLastComment()"></p-button>
     </ng-container>
     <ng-template #notComments>
-        <p>Empty </p>
+        <p>No comments to display.</p>
     </ng-template>
   </p-panel>
