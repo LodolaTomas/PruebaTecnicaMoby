@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ExitGuard } from 'src/app/guards/exit.guard';
 import { DetailComponent } from './detail/detail.component';
 import { ListComponent } from './list/list.component';
 
@@ -10,6 +11,7 @@ const postsRoutes: Routes = [
   },
   {
     path: 'posts/:id',
+    canDeactivate: [ExitGuard],
     component: DetailComponent,
   }
 ];
