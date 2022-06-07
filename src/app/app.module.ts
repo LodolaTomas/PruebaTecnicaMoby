@@ -8,6 +8,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { PostsModule } from './pages/posts/posts.module';
 import { PostsService } from './service/posts.service';
+import { StorageService } from './service/storage.service';
 import { SharedModule } from './shared/shared.module';
 
 @NgModule({
@@ -23,7 +24,7 @@ import { SharedModule } from './shared/shared.module';
     PostsModule,
     SharedModule
   ],
-  providers: [PostsService],
+  providers: [PostsService,StorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
