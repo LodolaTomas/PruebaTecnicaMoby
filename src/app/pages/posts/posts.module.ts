@@ -19,10 +19,12 @@ import { ConfirmationService } from 'primeng/api';
 import {FieldsetModule} from 'primeng/fieldset';
 import {InputTextModule} from 'primeng/inputtext';
 import { PostsService } from 'src/app/service/posts.service';
+import { CommentsComponent } from './components/comments/comments.component';
 @NgModule({
   declarations: [
     ListComponent,
-    DetailComponent
+    DetailComponent,
+    CommentsComponent
   ],
   imports: [
     CommonModule,
