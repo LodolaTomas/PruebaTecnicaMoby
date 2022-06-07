@@ -33,13 +33,16 @@ export class StorageService {
           }
         }
       });
-      this.setItem(this.postsComments);
-      this.subscriptionPostComments.next(this.postsComments);
+      this.sendAndUpdatePostComments()
     } else {
       this.postsComments.push({ postId, comments: [comment] });
-      this.setItem(this.postsComments);
-      this.subscriptionPostComments.next(this.postsComments);
+      this.sendAndUpdatePostComments()
     }
+  }
+
+  sendAndUpdatePostComments():void {
+    this.setItem(this.postsComments);
+      this.subscriptionPostComments.next(this.postsComments);
   }
 
   get PostComments(): CommentsInPost[] | null {
