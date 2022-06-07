@@ -1,9 +1,9 @@
 <p-panel header="Comments" [toggleable]="true">
-    <p-confirmDialog
-      [style]="{ width: '50vw' }"
-      [baseZIndex]="10000"
-    ></p-confirmDialog>
-    <ng-container *ngIf="comments.length>0;else notComments">
+  <p-confirmDialog
+    [style]="{ width: '50vw' }"
+    [baseZIndex]="10000"
+  ></p-confirmDialog>
+  <ng-container *ngIf="comments.length > 0; else notComments">
     <div class="comment-item" *ngFor="let comment of comments">
       <h5>
         Nombre: <span>{{ comment.name }}</span>
@@ -17,22 +17,57 @@
         >{{ comment.comment }}</textarea
       >
       <div class="p-toolbar-group-right">
-        <ng-container *ngIf="false">
-          <p-button
-            icon="pi pi-pencil"
-            styleClass="p-button-warning"
-          ></p-button>
+        <ng-container *ngIf="isLogged; else notLogged">
+          <ng-container *ngIf="isMyComment(comment.email)">
+            <p-button
+              icon="pi pi-pencil"
+              styleClass="p-button-warning"
+              (onClick)="editMyComments(comment.id, mymodal)"
+            ></p-button>
+            <p-button
+              icon="pi pi-trash"
+              styleClass="p-button-danger"
+              (click)="deleteMyComment(comment.id)"
+            ></p-button>
+          </ng-container>
         </ng-container>
-        <p-button
-          icon="pi pi-trash"
-          styleClass="p-button-danger"
-          (click)="deleteComment(comment.id)"
-        ></p-button>
+        <ng-template #notLogged>
+          <p-button
+            icon="pi pi-trash"
+            styleClass="p-button-danger"
+            (click)="deleteComment(comment.id)"
+          ></p-button>
+        </ng-template>
       </div>
     </div>
-    <p-button label="Emit" icon="pi pi-check" iconPos="left" styleClass="p-button-rounded p-button-secondary" (onClick)="emitLastComment()"></p-button>
-    </ng-container>
-    <ng-template #notComments>
-        <p>No comments to display.</p>
-    </ng-template>
-  </p-panel>
+    <p-button
+      label="Emit"
+      icon="pi pi-check"
+      iconPos="left"
+      styleClass="p-button-rounded p-button-secondary"
+      (onClick)="emitLastComment()"
+    ></p-button>
+  </ng-container>
+  <ng-template #notComments>
+    <p>No comments to display.</p>
+  </ng-template>
+</p-panel>
+
+<ng-template #mymodal let-modal>
+  <div class="modal-header">
+    <button
+      type="button"
+      class="btn-close btn"
+      data-bs-dismiss="modal"
+      aria-label="Close"
+      (click)="modal.dismiss()"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <app-new-comment
+      [postId]="postId"
+      [title]="'Edit Comment'"
+      [commentId]="selectedComment"
+    ></app-new-comment>
+  </div>
+</ng-template>
