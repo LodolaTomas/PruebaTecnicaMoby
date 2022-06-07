@@ -10,17 +10,20 @@ import { PostsService } from 'src/app/service/posts.service';
 export class DetailComponent implements OnInit{
   post!: Post;
   dateLastComment!:string;
+  idPost!:number;
   constructor(private postSrv: PostsService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
-      this.postSrv.getPost(params['id']).subscribe((data) => {
+      this.idPost = params['id'];
+      this.postSrv.getPost(this.idPost).subscribe((data) => {
         this.post = data;
       });
     });
   }
 
-  getLastComment(date:Date):void{
+  getLastComment(lastComment:string):void{
+    let date = new Date(lastComment);
     let year = date.getUTCFullYear()
     let month = date.toLocaleString('en', { month: 'long' })
     let day = date.getDate();
