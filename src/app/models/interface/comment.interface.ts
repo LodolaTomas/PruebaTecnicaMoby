@@ -3,5 +3,5 @@ export interface Comment{
     email:string;
     name:string;
     comment:string;
-    date:Date;
+    date:string;
 }
