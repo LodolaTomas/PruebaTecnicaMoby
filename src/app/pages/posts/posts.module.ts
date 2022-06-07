@@ -7,7 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { ListComponent } from './list/list.component';
 import { DetailComponent } from './detail/detail.component';
-import { PostsService } from 'src/app/service/posts.service';
+import { PostsService } from 'src/app/services/posts.service';
 import { CommentsComponent } from './components/comments/comments.component';
 import { NewCommentComponent } from './components/new-comment/new-comment.component';
 
